@@ -9,15 +9,16 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Raleway:wght@800&family=Roboto:wght@400;500;700;900&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="iziToast.min.css">
+  <!-- <link rel="stylesheet" href="iziToast.min.css"> -->
   <link rel="stylesheet" href="./css/styles.css" />
 </head>
 
 <body>
-  <form>
-    <input type="text" name="searchInput" class="search-input">
-    <button type="submit" class="submit-btn">submit</button>
+  <form class="form">
+    <input type="text" class="search-input" placeholder="What are we looking for?">
+    <button type="submit" class="submit-btn">Search</button>
   </form>
+  <span class="loader is-hidden">Try to find...</span>
   <ul class="gallery"></ul>
   <script type="module" src="./main.js"></script>
 </body>
