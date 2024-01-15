@@ -31,21 +31,27 @@ function fetchImages(event) {
       return response.json();
     })
     .then(images => {
-      setTimeout(() => {
-        loader.classList.add('is-hidden');
-        if (images.hits.length === 0) {
-          return iziToast.warning({
-            title: 'Ooops',
-            message:
-              'Sorry, there are no images matching your search query. Please try again!',
-            position: 'topRight',
-          });
-        }
-        renderImages(images.hits);
-      }, 2000);
+      if (images.hits.length === 0) {
+        console.log(iziToast.warning);
+
+        return iziToast.warning({
+          title: 'Ooops',
+          message:
+            'Sorry, there are no images matching your search query. Please try again!',
+          position: 'topRight',
+        });
+      }
+      renderImages(images.hits);
     })
-    .catch(error => console.log(error))
+    .catch(error =>
+      iziToast.error({
+        title: 'Error',
+        message: 'Something is wrong!',
+        position: 'topRight',
+      })
+    )
     .finally(() => {
+      loader.classList.add('is-hidden');
       form.reset();
     });
 }
